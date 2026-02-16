@@ -3,12 +3,13 @@
 #include <fstream>
 #include <string>
 #include "file.h"
+#include "data.h"
 
-int ver = num_of_build(0,0,1);
+int ver = num_of_build(0,0,3);
 const std::string file_default_name = "NewFileZaharPad.txt";
 
 void Command_Message() {
-	std::cout << "Command: \n--newfile\n--loadfile\n--exit" << std::endl;
+	std::cout << "Command: \n--newfile\n--loadfile\n--recentfile\n--exit" << std::endl;
 }
 
 void HelloMessage() {
@@ -31,7 +32,7 @@ int main() {
 	Command_Message();
 	
 	File_Act file_a;
-	
+	Log log;
 	bool running = true;
 	
 	while(running) {
@@ -47,6 +48,9 @@ int main() {
 		}
 		else if(command == "loadfile") {
 			file_a.LoadFile();
+		}
+		else if(command == "recentfile") {
+			log.TakeHist();
 		}
 	}
 }
